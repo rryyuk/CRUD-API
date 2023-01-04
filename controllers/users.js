@@ -3,7 +3,7 @@ let users = [];
 
 export const getUsers = (req, res) =>{
     if(users.length == 0) {
-        res.send("Error user not found");
+        res.send("Error user not f ");
     } else {
         console.log(users);
         res.send(users);
