@@ -3,7 +3,7 @@ let users = [];
 
 export const getUsers = (req, res) =>{
     if(users.length == 0) {
-        res.sendStatus(400).send("user ID not found");
+        res.sendStatus(400);
     } else {
         console.log(users);
         res.send(users);
