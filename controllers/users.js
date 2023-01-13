@@ -3,19 +3,19 @@ let users = [];
 
 export const getUsers = (req, res) =>{
     if(users.length == 0) {
-        res.send("Error user not f ");
+        res.sendStatus(400).send("user ID not found");
     } else {
         console.log(users);
         res.send(users);
     }
-
 }
 
 export const createUser =  (req, res) =>{
     const user = req.body; 
 
     users.push({ ...user, id: uuidv4() });
-     res.send(`User with the name ${user.firstName} added to the database`);
+    // res.write("user added");
+    res.send({...user, id: uuidv4()});
 }
 
 export const getUser = (req, res) =>{
@@ -27,7 +27,7 @@ export const getUser = (req, res) =>{
 export const deleteUser =  (req, res) =>{
     const { id } = req.params;
     users = users.filter((user) => user.id != id);
-    res.send('user deleted');
+    res.sendStatus(200);
   
 }
 
@@ -46,6 +46,6 @@ export const updateUser = (req, res) =>{
         user.age = age;
     }
 
-    res.send(`User named changed ${firstName}`);
+     res.send({...user, id: uuidv4()});
 
 }
